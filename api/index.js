@@ -3,11 +3,15 @@ const router = require("../routes/route")// Importing the router from routes
 
 const cors = require("cors")
 const app = express()
+const path = require('path');// Importing path for .env file resolution
+
+
+
 app.use(cors())
 app.use('/api/tasks',router)
 
-app.use(express.json())//T
-require('dotenv').config()
+app.use(express.json())
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });//  Loading environment variables from .env file
 const port = process.env.PORT || 3004
 
 // Loading
